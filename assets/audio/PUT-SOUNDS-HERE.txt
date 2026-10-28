@@ -1,0 +1,9 @@
+Put recorded sounds in this folder. Use exactly these file names (.mp3 or .ogg).
+Any file you leave out simply uses the game's built-in sound instead.
+See SOUNDS.md in the main folder for what each sound should be and where to get it free.
+
+afrobeats-loop    tap              ding             cash-register     sizzle
+chop              scrub            water-splash     wrong             grumble
+serve             star             rush-hour        power-off         generator-sputter
+generator-start   amb-traffic      amb-market       amb-restaurant    amb-rain
+car-horn          danfo-horn       okada-pass       conductor-calls

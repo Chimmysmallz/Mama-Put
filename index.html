@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#1d6b3a">
+<meta name="description" content="Mama Put: run a Nigerian buka. Cook jollof, fry dodo and akara, pour zobo and serve hungry customers before they leave.">
+<title>Mama Put: Buka Rush</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self'; media-src 'self' blob: data:; connect-src 'self' https://*.supabase.co https://www.googleapis.com https://accounts.google.com; frame-src https://accounts.google.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="stage">
+
+  <!-- ===== Gameplay ===== -->
+  <div id="play">
+    <img id="bg" src="assets/img/bg.jpg" alt="">
+    <div id="custLayer"></div>
+    <img id="counter" src="assets/img/counter.jpg" alt="">
+    <div id="stations"></div>
+    <div id="fx"></div>
+
+    <div id="hud">
+      <div class="chip" id="hudLevel">Day 1</div>
+      <div class="chip" id="hudTime">⏱ 1:20</div>
+      <div id="goal">
+        <div id="goalFill"></div>
+        <div class="star" id="st1">★</div><div class="star" id="st2">★</div><div class="star" id="st3">★</div>
+        <div id="goalText">₦0</div>
+      </div>
+      <div class="chip" id="hudBank" title="Buka account">🏦 ₦0</div>
+      <div class="chip" id="hudHearts" style="display:none">❤❤❤</div>
+      <button class="chip btn-ic" id="btnPause" title="Pause">⏸</button>
+    </div>
+
+    <div id="hint"><img src="assets/img/mama.png" alt=""><span id="hintText"></span></div>
+    <div id="pointer">👆</div>
+    <div id="toast"></div>
+    <div id="rushBanner">🔥 RUSH HOUR! 🔥</div>
+    <div id="dark"></div>
+    <button class="big" id="genBtn">⚡ NEPA took light! Start the generator</button>
+    <button class="big" id="gasBtn">🔥 The gas has finished! Change the cylinder</button>
+
+    <!-- ===== Side scenes: Mama's kitchen, generator, washing ===== -->
+    <div id="kitchen">
+      <img class="kbg" id="kbg" src="assets/img/cook-bg.jpg" alt="">
+      <div id="kScene"></div>
+      <div id="kStep"><img id="kFace" src="assets/img/mama.png" alt=""><div><div id="kStepNo">Step 1</div><div id="kStepText"></div></div></div>
+      <div id="kTaste">Taste <span id="kStars">★★★</span></div>
+      <div id="kMeter"><div id="kZone"></div><div id="kFill"></div><div id="kMeterLbl"></div></div>
+      <div id="kWait"></div>
+      <button class="small" id="kQuick">Let Mama finish ⏩</button>
+      <div id="kPointer">👆</div>
+    </div>
+  </div>
+
+  <!-- ===== Title ===== -->
+  <div class="screen" id="scrTitle">
+    <img class="cover" src="assets/img/title.jpg" alt="">
+    <div class="shade"></div>
+    <div class="logo">MAMA PUT<small>Buka Rush</small></div>
+    <div class="menu">
+      <button class="big" id="btnPlay">▶ PLAY</button>
+      <button class="small" id="btnRush">🔥 Rush Hour</button>
+      <button class="small" id="btnStory">📖 Story</button>
+      <button class="small" id="btnAch2">🏆 Rewards</button>
+      <button class="small" id="btnBoard">🏅 Leaderboard</button>
+      <button class="small" id="btnSettings">⚙ Settings</button>
+    </div>
+    <div class="ver">v5.0 · made with HTML5</div>
+  </div>
+
+  <!-- ===== Level map ===== -->
+  <div class="screen" id="scrMap">
+    <img class="cover blur" src="assets/img/bg.jpg" alt="">
+    <div class="panel wide">
+      <div class="panel-head">
+        <button class="small" id="mapBack">◀ Back</button>
+        <h2>Mama's journey: choose a day</h2>
+        <div class="wallet" id="mapWallet">₦0</div>
+        <button class="small btn-gear" id="mapSettings">⚙</button>
+      </div>
+      <div id="levelGrid"></div>
+      <div class="panel-foot">
+        <button class="big" id="btnShop">🛒 Upgrades</button>
+        <button class="big decor" id="btnDecor">🎨 Decorate</button>
+        <button class="big team" id="btnHelpers">👩🏾‍🍳 Helpers</button>
+        <button class="big bank" id="btnBank">🏦 Account</button>
+        <button class="big gold" id="btnAch">🏆 Rewards</button>
+        <button class="big rush" id="btnRush2">🔥 Rush</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Shop ===== -->
+  <div class="screen" id="scrShop">
+    <img class="cover blur" src="assets/img/bg.jpg" alt="">
+    <div class="panel wide">
+      <div class="panel-head">
+        <button class="small" id="shopBack">◀ Back</button>
+        <h2>Kitchen upgrades</h2>
+        <div class="wallet" id="shopWallet">₦0</div>
+      </div>
+      <div id="shopGrid"></div>
+    </div>
+  </div>
+
+  <!-- ===== Settings ===== -->
+  <div class="screen" id="scrSettings">
+    <img class="cover blur" src="assets/img/bg.jpg" alt="">
+    <div class="panel wide">
+      <div class="panel-head">
+        <button class="small" id="setBack">◀ Back</button>
+        <h2>⚙ Settings</h2>
+        <div style="width:120px"></div>
+      </div>
+      <div id="setBody"></div>
+    </div>
+  </div>
+
+  <!-- ===== Modal (intro, results, account, editor, pause) ===== -->
+  <div class="screen modal" id="scrModal">
+    <div class="panel" id="modalBox"></div>
+  </div>
+
+  <!-- ===== Story dialogue ===== -->
+  <div class="screen" id="scrDialog">
+    <img class="cover blur" src="assets/img/bg.jpg" alt="">
+    <img id="dlgPic" src="assets/img/mama.png" alt="">
+    <div id="dlgBox">
+      <div id="dlgName">Mama</div>
+      <div id="dlgChapter"></div>
+      <div id="dlgText"></div>
+      <button class="big" id="dlgNext">Next ▶</button>
+    </div>
+    <button class="small" id="dlgSkip">Skip ⏭</button>
+  </div>
+</div>
+
+<div id="rotate">
+  <div>📱↻</div>
+  <p>Turn your phone sideways for the best kitchen view.</p>
+  <button class="small" id="rotateOk">Play anyway</button>
+</div>
+<input type="file" id="fileIn" accept=".json,application/json" style="display:none">
+<script src="js/config.js"></script>
+<script src="js/levels.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>

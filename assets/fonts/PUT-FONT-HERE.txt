@@ -1,0 +1,6 @@
+Optional: the game's font, served from your own site so no player data goes to Google.
+1. Go to https://fonts.google.com/specimen/Baloo+2 and click "Get font" > "Download all".
+2. Convert Baloo2-Regular.ttf and Baloo2-ExtraBold.ttf to .woff2 (for example at https://cloudconvert.com/ttf-to-woff2),
+   or use any .woff2 copy of Baloo 2.
+3. Name them Baloo2-Regular.woff2 and Baloo2-ExtraBold.woff2 and put them in this folder.
+Baloo 2 is free under the SIL Open Font License. Without these files the game uses the phone's own fonts.
